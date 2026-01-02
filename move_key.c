@@ -128,23 +128,23 @@ static void	move_right(t_map *game)
 	}
 }
 
-int	key_press(int key_code, t_map *game)
+int key_press(int key_code, t_map *game)
 {
-	if (key_code == 53)
-	{
-		write(1, "Game closed!", 12);
-		ft_full_free(game);
-		ft_free_mlx(game);
-		exit(0);
-	}
-	if (key_code == 13 || key_code == 126)
-		move_up(game);
-	else if (key_code == 1 || key_code == 125)
-		move_down(game);
-	else if (key_code == 0 || key_code == 123)
-		move_left(game);
-	else if (key_code == 2 || key_code == 124)
-		move_right(game);
-	put_image(game);
-	return (0);
+    if (key_code == KEY_ESC)
+    {
+        write(1, "Game closed!\n", 13);
+        ft_full_free(game);
+        ft_free_mlx(game);
+        exit(0);
+    }
+    if (key_code == KEY_W || key_code == KEY_UP)
+        move_up(game);
+    else if (key_code == KEY_S || key_code == KEY_DOWN)
+        move_down(game);
+    else if (key_code == KEY_A || key_code == KEY_LEFT)
+        move_left(game);
+    else if (key_code == KEY_D || key_code == KEY_RIGHT)
+        move_right(game);
+    put_image(game);
+    return (0);
 }
